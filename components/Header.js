@@ -16,8 +16,10 @@ import {
 	ViewGridIcon,
 } from "@heroicons/react/solid";
 import HeaderIcon from "./HeaderIcon";
+import { useSession, signOut } from "next-auth/react";
 
 function Header() {
+	const {data: session} = useSession()
 	return (
 		<div className="flex sticky top-0 z-50 bg-white items-center p-2 lg:px-5 shadow-md">
 			<div className="flex items-center">
@@ -49,16 +51,19 @@ function Header() {
 			</div>
 
 			<div className="flex items-center sm:space-x-2 justify-end">
-				<div className="flex">
-					<img
-						className="rounded-full h-7 w-7"
-						src="https://windows10spotlight.com/wp-content/uploads/2018/10/0666a2eb7b483900e65de263a3c6ebc6-768x432.jpg"
-						alt=""
-					/>
-					<p className="font-semibold pr-3 whitespace-nowrap">
-						Fadeel Gbaiye
-					</p>
-				</div>
+				<Image
+					// className="rounded-full h-7 w-7"
+					className="rounded-full cursor-pointer"
+					src="https://windows10spotlight.com/wp-content/uploads/2018/10/0666a2eb7b483900e65de263a3c6ebc6-768x432.jpg"
+					alt=""
+					width={40}
+					height={40}
+					layout="fixed"
+				/>
+
+				<p className="font-semibold pr-3 whitespace-nowrap">
+					Fadeel Gbaiye
+				</p>
 
 				<ViewGridIcon className="icon" />
 				<ChatIcon className="icon" />
