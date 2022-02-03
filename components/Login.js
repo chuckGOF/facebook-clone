@@ -9,7 +9,7 @@ function Login() {
 				src="https://links.papareact.com/t4i"
 				alt=""
 				height={400}
-				width={40}
+				width={400}
 				objectFit="contain"
 			/>
 			<h1
