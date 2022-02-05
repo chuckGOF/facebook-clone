@@ -4,6 +4,7 @@ import { useSession, getSession } from "next-auth/react";
 import Login from "../components/Login";
 import Sidebar from '../components/Sidebar'
 import {userDetails} from '../constants'
+import Feed from "../components/Feed";
 
 export async function getServerSideProps(context) {
 	return {
@@ -30,6 +31,7 @@ export default function Home({ session }) {
 			<Header />
 			<main className="flex">
 				<Sidebar />
+				<Feed />
 			</main>
 		</div>
 	);
