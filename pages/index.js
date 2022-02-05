@@ -2,6 +2,8 @@ import Head from "next/head";
 import Header from "../components/Header";
 import { useSession, getSession } from "next-auth/react";
 import Login from "../components/Login";
+import Sidebar from '../components/Sidebar'
+import {userDetails} from '../constants'
 
 export async function getServerSideProps(context) {
 	return {
@@ -13,15 +15,10 @@ export async function getServerSideProps(context) {
 
 export default function Home({ session }) {
 	// const { data: session } = useSession();
-	const sess = {
-		username: 'fadeelgbaiye',
-		image: "https://windows10spotlight.com/wp-content/uploads/2018/10/0666a2eb7b483900e65de263a3c6ebc6-768x432.jpg"
-
-	}
-
-	if (!sess) return <Login />;
+	
+	if (!userDetails) return <Login />;
 	return (
-		<div>
+		<div className="h-screen bg-gray-100 overflow-hidden">
 			<Head>
 				<title>Facebook</title>
 				<meta
@@ -31,6 +28,9 @@ export default function Home({ session }) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Header />
+			<main className="flex">
+				<Sidebar />
+			</main>
 		</div>
 	);
 }
