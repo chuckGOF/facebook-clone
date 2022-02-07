@@ -5,8 +5,10 @@ module.exports = {
 		domains: [
 			"links.papareact.com",
 			"platform-lookaside.fbsbx.com",
-			"forebasestorage.googleapis.com",
+			"firebasestorage.googleapis.com",
 			"windows10spotlight.com",
+			"media-exp1.licdn.com",
+			"cloudflare-ipfs.com",
 		],
 	},
 };

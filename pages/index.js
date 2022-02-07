@@ -5,6 +5,7 @@ import Login from "../components/Login";
 import Sidebar from '../components/Sidebar'
 import {userDetails} from '../constants'
 import Feed from "../components/Feed";
+import Widgets from "../components/Widgets";
 
 export async function getServerSideProps(context) {
 	return {
@@ -32,6 +33,7 @@ export default function Home({ session }) {
 			<main className="flex">
 				<Sidebar />
 				<Feed />
+				<Widgets />
 			</main>
 		</div>
 	);
