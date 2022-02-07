@@ -61,7 +61,7 @@ function Header() {
 					layout="fixed"
 				/>
 
-				<p className="font-semibold pr-3 whitespace-nowrap">
+				<p className="hidden md:inline-flex font-semibold pr-3 whitespace-nowrap">
 					Fadeel Gbaiye
 				</p>
 

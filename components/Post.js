@@ -24,9 +24,13 @@ function Post({ name, username, userImage, caption, postImage, timestamp }) {
 					/>
 					<div className="flex-grow">
 						<p className="font-medium">{name}</p>
-						<p className="text-xs text-gray-400">
-							{new Date(timestamp?.toDate()).toLocaleString()}
-						</p>
+						{timestamp ? (
+							<p className="text-xs text-gray-400">
+								{new Date(timestamp?.toDate()).toLocaleString()}
+							</p>
+						) : (
+							<p className="text-xs text-gray-400">Loading...</p>
+						)}
 					</div>
 					<div className="flex justify-end">
 						<DotsHorizontalIcon className="h-7 w-7" />

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { query, collection, orderBy, getDocs } from "firebase/firestore";
 import Post from "./Post";
-import { useCollection } from "react-firebase-hooks/firestore";
+// import { useCollection } from "react-firebase-hooks/firestore";
 
-function Posts() {
+function Posts({ p }) {
 	const [posts, setPosts] = useState([]);
 
 	useEffect(() => {
@@ -35,18 +35,29 @@ function Posts() {
 
 	return (
 		<div>
-			{posts &&
-				posts.map((post) => (
-					<Post
-						key={post.id}
-						name={post.name}
-						username={post.username}
-						userImage={post.userImage}
-						caption={post.post}
-						postImage={post.postURL}
-						timestamp={post.timestamp}
-					/>
-				))}
+			{posts
+				? posts.map((post) => (
+						<Post
+							key={post.id}
+							name={post.name}
+							username={post.username}
+							userImage={post.userImage}
+							caption={post.post}
+							postImage={post.postURL}
+							timestamp={post.timestamp}
+						/>
+				  ))
+				: p.map((post) => (
+						<Post
+							key={post.id}
+							name={post.name}
+							username={post.username}
+							userImage={post.userImage}
+							caption={post.post}
+							postImage={post.postURL}
+							timestamp={post.timestamp}
+						/>
+				  ))}
 		</div>
 	);
 }

@@ -2,22 +2,46 @@ import Head from "next/head";
 import Header from "../components/Header";
 import { useSession, getSession } from "next-auth/react";
 import Login from "../components/Login";
-import Sidebar from '../components/Sidebar'
-import {userDetails} from '../constants'
+import Sidebar from "../components/Sidebar";
+import { userDetails } from "../constants";
 import Feed from "../components/Feed";
 import Widgets from "../components/Widgets";
+import {
+	collection,
+	getDocs,
+	orderBy,
+	query,
+} from "firebase/firestore";
+import { db } from "../firebase";
 
 export async function getServerSideProps(context) {
+	const posts = await getDocs(
+		query(collection(db, "posts"), orderBy("timestamp", "desc"))
+	);
+
+	let docs = []
+
+	posts.forEach((post) => {
+		let data = {
+			id: post.id,
+			...post.data(),
+			timestamp: null
+		}
+
+		docs = [...docs, data]
+	})
+
 	return {
 		props: {
 			session: await getSession(context),
+			posts: docs
 		},
 	};
 }
 
-export default function Home({ session }) {
+export default function Home({ session, posts }) {
 	// const { data: session } = useSession();
-	
+
 	if (!userDetails) return <Login />;
 	return (
 		<div className="h-screen bg-gray-100 overflow-hidden">
@@ -32,7 +56,7 @@ export default function Home({ session }) {
 			<Header />
 			<main className="flex">
 				<Sidebar />
-				<Feed />
+				<Feed posts={posts}/>
 				<Widgets />
 			</main>
 		</div>
