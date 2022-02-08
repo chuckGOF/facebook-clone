@@ -38,6 +38,7 @@ function Post({ name, username, userImage, caption, postImage, timestamp }) {
 				</div>
 				<p className="pt-4">{caption}</p>
 			</div>
+			
 			{postImage && (
 				<div className="relative h-56 md:h-96 bg-white">
 					<Image

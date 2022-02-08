@@ -46,7 +46,7 @@ function Posts({ p }) {
 							postImage={post.postURL}
 							timestamp={post.timestamp}
 						/>
-				  ))
+				))
 				: p.map((post) => (
 						<Post
 							key={post.id}
@@ -57,7 +57,7 @@ function Posts({ p }) {
 							postImage={post.postURL}
 							timestamp={post.timestamp}
 						/>
-				  ))}
+				))}
 		</div>
 	);
 }
